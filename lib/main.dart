@@ -91,11 +91,13 @@ class _MainAppState extends State<MainApp> {
         'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
     final path = (await getExternalStorageDirectory())!.path;
 
-    await _tryDeleteExistingFile(path, 'dummy.pdf');
+    // this one is needed for duplicate downloads into the externalStorageDirectory
+    // await _tryDeleteExistingFile(path, 'dummy.pdf');
 
     final taskId = await FlutterDownloader.enqueue(
       url: urlString,
-      savedDir: path,
+      savedDir:
+          path, // here we could also use the 'await getDownloadsDirectory().path' instead
       headers: {},
       showNotification: true,
       openFileFromNotification: true,
