@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_downloader: ^1.11.6
+  path_provider: ^2.1.2
 
 dev_dependencies:
   flutter_test:
